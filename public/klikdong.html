@@ -1,0 +1,64 @@
+<html><meta charset='UTF-8'/><meta content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5' name='viewport'/><meta content='IE=edge' http-equiv='X-UA-Compatible'/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script><link href="https://drive.google.com/uc?export=view&id=1SLiCzZSfhDABVn0dYzk95gvas2FIpuF1" rel="stylesheet" type="text/css" /><script src="https://klikdong.feeldream.repl.co/script.js"></script>
+<head>
+<!-- 
+  Made with love by Rayys!
+
+     Blog: https://PalingIT.com
+     Instagram: @rayyarrr
+     TikTok: @rayy4r
+     Email: rayyar0703@gmail.com
+
+  Thanks to all <3
+-->
+</head>
+
+<body>
+<!-- Ganti Wallpaper di sini--><style>
+body{background-image:url("https://i.postimg.cc/RCXKky2z/IMG-20211205-131524-095.jpg");background-repeat: no-repeat;animation:none;background-size: 100% 100%;}
+</style>
+
+<div id='Content'>
+<div class="foto"><div class="image">
+<!-- Foto Atas --><img src="https://i.postimg.cc/1tYFjC4j/rain-together.gif" width="100px" height="100px"/></div></div>
+
+<div id='pergeseran'>
+<p><i>Geser &#128073;</i></p>
+<p>Halo manis~</p>
+<p>Kamu lagi sakit ya? </p>
+<p>Semoga cepet sembuh </p>
+<p>Jangan lupa diminum obatnya ya</p>
+<p>Banyakin istirahat,</p>
+<p>Jangan main HP terus </p>
+<p><i>Okeeyyy?</i></p>
+<p>Klik ini dong &#129303; &#128073; <a id="tm" onClick='pmau();'>[ &#128571; ]</a></p>
+</div>
+</div>
+
+<script>
+  //Audio Link MP3
+  function play() {var audio = new Audio('https://hei.likeadream.repl.co/kopet.mp3');audio.play();audio.loop=true;audio.addEventListener('ended', function() {this.currentTime = 0;this.play();}, false);} const swals = Swal.mixin({cancelButtonColor: '#909090', confirmButtonColor: '#00B487', allowOutsideClick: false,});
+
+async function pmau(){
+await swals.fire({
+  title: 'Get Well Soon ><',
+  text: 'Moga cepet sembuh ya <3',
+  imageUrl: 'https://i.postimg.cc/KYM5FfBD/bubududu.gif',
+  imageWidth: 120,
+  imageHeight: 120,
+});
+await swals.fire('Kirim pesan ke no WhatsApp aku ya!!!');
+window.location = "https://api.whatsapp.com/send?phone=&text=Makasii yaaa><";}
+
+async function start() {await swals.fire('Halo');setTimeout(mulai, 900);play();}
+start();
+</script>
+
+<script>
+  function showDiv() {document.getElementById('Content').style.opacity = "1";}
+  function iloveu() {document.getElementById('sp1').style.display = "none";document.getElementById('sp2').style.display = "block";document.getElementById('text2').style.display = "none";}
+  function mulai() {ketiknm();showDiv();document.querySelector("body").style.animation = "none 6s ease infinite";}
+  function ketiknm() {document.getElementById('pergeseran').style.opacity = "1";document.getElementById('pergeseran').style.visibility = "visible";document.getElementById('pergeseran').style.margin = "40px 0 0 0";}
+</script>
+</body>
+</html>

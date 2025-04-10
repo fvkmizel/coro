@@ -1,0 +1,104 @@
+<html><meta charset='UTF-8'/><meta content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5' name='viewport'/><meta content='IE=edge' http-equiv='X-UA-Compatible'/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script><link href="https://drive.google.com/uc?export=view&id=1iTH5sSrvvLC7ZBAfTGoohwf1tVRkh_rM" rel="stylesheet" type="text/css" /><script src="https://Kamunya.feeldream.repl.co/script.js"></script>
+<head>
+<title>Script HTML Kamunya Kapan?</title>
+<!-- 
+  Made with love by Rayys!
+
+     Blog: https://PalingIT.com
+     Instagram: @rayyarrr
+     TikTok: @rayy4r
+     Email: rayyar0703@gmail.com
+
+  Thanks to all <3
+-->
+</head>
+<style>
+:root {
+--warna-bg: rgba(0, 0, 0, .75); 
+--warna-teks: white;
+--warna-bingkai: rgba(255, 255, 255, .7);
+--bingkai: 12px;
+--gaya-font: 'Ubuntu', sans-serif;
+}
+</style>
+<body>
+
+   <div id="bgbelakang">
+     <!-- Wallpaper --><img src="https://i.ibb.co/VJ3DbbG/street22.jpg"/>
+   </div>
+
+   <div id='Content'>
+   <!-- Foto Atas --><div><img id="fotosatu" src=""/><img id="fotodua" src=""/><img id="fototiga" src=""/><img id="fotoempat" src=""/></div>
+   <div><blockquote id='bq'>
+   <p id="kalimat">...</p>
+   <p id="kalimatc"></p>
+   </blockquote></div>
+   
+   <!-- Tombol Kirim Pesan --><div id="contTom"><a id="By" class='button' onClick="sjawab()">Klik untuk Jawab</a></div>
+   </div>
+
+<!-- Jangan Edit Bagian Ini --><script>
+  function showDiv() {setTimeout(setel,50);pergantian();setTimeout(kpemb,100);document.getElementById('Content').style = "opacity:1;margin-top:4vh;animation:kont 5s infinite;";document.querySelector("body").style.animation = "none 8s ease infinite";} function kpemb() {bq.style = "opacity:1;visibility:visible;margin-top:5px";}
+  function loadfoto(){fotosatu.style="display:inline-flex";fotosatu.src = gambar1;fotodua.src = gambar2;fototiga.src = gambar3;fotoempat.src = gambar4;}
+  function tombol(){contTom.style="opacity:1;transform: scale(1);";ftom=1;} ftom=0; function fakhiran(){document.getElementById("akhiran").style = "display:inline-flex";}
+  const swals = Swal.mixin({allowOutsideClick: false, cancelButtonColor: '#FF0040',}); const swalsy = Swal.mixin({confirmButtonText: 'Iya', allowOutsideClick: false,}); const swalst = Swal.mixin({allowOutsideClick: false, showConfirmButton: false, timer: 1200, timerProgressBar: true, didOpen: () => {Swal.showLoading();const b = Swal.getHtmlContainer().querySelector('b');timerInterval = setInterval(() => {Swal.getTimerLeft()}, 100)},willClose: () => {clearInterval(timerInterval)}}); const style = document.createElement('style'); var today = new Date();var dd = String(today.getDate()).padStart(2, '0');var mm = String(today.getMonth() + 1).padStart(2, '0');var yyyy = today.getFullYear();const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];today = dd + ' ' + monthNames[today.getMonth()] + ' ' + yyyy;
+  function otomatis() {befanimkata();setTimeout(animkata,200);} function befanimkata(){kalimatc.style="transform:scale(.3);margin-top:30px;";} function animkata() {kalimatc.style="transform:scale(1);margin-top:30px;";}
+  function finalakhir(){ftom=2;otomatis();By.innerHTML = "Kirim Pesan";kalimatc.innerHTML = "Jawabanmu: " + pesanwhatsapp;} function sjawab(){if(ftom==1){jawab();} if(ftom==2){menuju();}}
+  function setel(){audio.play();} function setel2(){bgm.play();} 
+  var aa=0,katangetik;function ngetik() {if(aa<katangetik.length){kalimat.innerHTML += katangetik.charAt(aa);aa++;setTimeout(ngetik,60);}}
+  var ai=0,katangetik2;function ngetik2() {if(ai<katangetik2.length){kalimat.innerHTML += katangetik2.charAt(ai);ai++;setTimeout(ngetik2,60);}}
+  var au=0,katangetik3;function ngetik3() {if(au<katangetik3.length){kalimat.innerHTML += katangetik3.charAt(au);au++;setTimeout(ngetik3,50);} if(au==katangetik3.length){setTimeout(bawahlagi,600);}}
+  function bawahlagi(){fototiga.style="display:none";fotoempat.style="display:inline-flex";setTimeout(tombol,1000);kalimatc.style="margin-top:30px;";kalimatc.innerHTML = emot;}
+  
+  function pergantian(){setTimeout(gantikata,1700);setTimeout(gantikata,4200);setTimeout(gantikata,6400);}
+  function tfkata(){fkata+=1;} function bersihkan(){kalimat.innerHTML = "";}
+  fkata=1;function gantikata(){
+        if(fkata==1){kalimat.innerHTML = "";setTimeout(ngetik,50);}
+        if(fkata==2){kalimat.innerHTML = "";setTimeout(ngetik2,50);fotosatu.style="display:none";fotodua.style="display:inline-flex;"}
+        if(fkata==3){kalimat.innerHTML = "";setTimeout(ngetik3,50);fotodua.style="display:none";fototiga.style="display:inline-flex";}
+        setTimeout(tfkata, 300);
+  }
+</script> <!-- Sampai Sini -->
+
+<!-- Ganti Kata², Foto, Lagu di bawah ya
+1) Upload foto ke https://postimages.org
+     buat dapetin linknya
+2) Ganti Lagu Upload ke replit.com
+     atau bisa juga ke mailboxdrive.com -->
+
+<script type="text/javascript">
+       async function menuju(){await swals.fire('Kirim pesan ke WhatsApp aku, ya!');window.location = "https://api.whatsapp.com/send?phone=&text=" + pesanwhatsapp;}
+       async function jawab(){
+           var { value: jawaban } = await swals.fire({
+               title: 'Ketik Jawabannya &#128073;&#128072;', 
+               input: 'text', allowOutsideClick: false, showCancelButton: false,
+           });
+           if(jawaban && jawaban.length < 16){
+           	window.jawaban = jawaban;
+               pesanwhatsapp = jawaban;
+               finalakhir();
+           } else {
+               await swals.fire('Ups!', 'Jawaban tidak boleh kosong atau lebih dari 15 karakter, ya!');jawab();
+           }
+       }
+
+      async function pertama(){
+         audio = new Audio('https://audio.jukehost.co.uk/IkPAuUie3UV0XRyF1Y6iJRxski2Q7qt3');
+         
+         gambar1 = "https://i.ibb.co/XJ896v2/cilukba.gif";
+         gambar2 = "https://i.ibb.co/zH4hKHq/gigitin.gif";
+         gambar3 = "https://i.ibb.co/NW9b6GF/tos.gif";
+         gambar4 = "https://i.ibb.co/kG3cHh0/emawh.gif";
+         
+         katangetik = "Masih.. Disayang Mamah Nih,";
+         katangetik2 = "Belum Disayang Kamu...";
+         katangetik3 = "Kamunya Kapan Sayang Sama Aku? 🤭";
+         
+         emot = "Anjay 👉🏻👈🏻";
+
+         loadfoto();await swalst.fire('Tunggu');await swals.fire('Selamat datang!', 'Sekarang lihat ini ya :)');setTimeout(showDiv,300);
+       } pertama();
+</script>
+</body>
+</html>
