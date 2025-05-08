@@ -1,118 +1,186 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thalasemia Edukatif</title>
-  <meta name="description" content="Web edukasi interaktif tentang Thalasemia. Dibuat dengan animasi ala Feeldream.">  <!-- SweetAlert2 -->  <script src="sweetalert2.all.min.js"></script>  <!-- Font & Style -->  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <title>Apa itu?</title>
+  <meta name="description" content="Web edukasi interaktif tentang Thalassemia.">
+  <link rel="icon" href="https://i.scdn.co/image/ab67616d00001e02f02777fb6264e2870608839f" type="image/png">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Work Sans', sans-serif;
-      background: linear-gradient(to bottom, #dfefff, #f0f4ff);
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(to bottom, #eaf6ff, #ffffff);
       overflow: hidden;
-    }#landing {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: #eaf2f8;
-}
+      color: #333;
+    }
 
-#landing img {
-  width: 120px; /* Ganti logo RSIA Tambak di sini */
-  margin-bottom: 20px;
-}
+    #landing {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #eaf2f8;
+      z-index: 2;
+    }
 
-#startBtn {
-  padding: 12px 24px;
-  background: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.1em;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
+    #startBtn {
+      padding: 12px 24px;
+      background: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1em;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
 
-#bgAudio {
-  display: none;
-}
+    #content {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
 
+    .typing {
+      white-space: pre-wrap;
+      border-right: 2px solid #666;
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    img.slide-img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+
+    .source {
+      font-size: 0.9em;
+      color: #777;
+      margin-top: 10px;
+    }
   </style>
 </head>
-<body>  <div id="landing">
-    <!-- Ganti dengan logo RSIA Tambak -->
-    <img src="logo-placeholder.png" alt="Logo RSIA Tambak">
-    <button id="startBtn" onclick="memulai()">Apa Itu Thalasemia?</button>
-  </div>  <!-- Background music --><audio id="bgAudio" src="musik-edukatif.mp3" preload="auto" loop></audio>
+<body>
 
-  <script>
-    const materi = [
-      {
-        title: 'Apa itu Thalasemia?',
-        text: '• Thalasemia adalah penyakit kelainan darah turunan.\n\n• Tubuh tidak mampu memproduksi hemoglobin dengan normal.\n\n• Hemoglobin penting untuk membawa oksigen ke seluruh tubuh.\n\n• Thalasemia bukan penyakit menular.'
-      },
-      {
-        title: 'Penyebab Thalasemia',
-        text: '• Disebabkan oleh kelainan genetik dari salah satu atau kedua orang tua.\n\n• Jika hanya satu gen yang diturunkan: disebut thalasemia minor.\n\n• Jika dua gen diturunkan: disebut thalasemia mayor.\n\n• Thalasemia mayor lebih berat dan butuh penanganan serius.'
-      },
-      {
-        title: 'Gejala Thalasemia Mayor',
-        text: '• Wajah pucat dan mudah lelah.\n\n• Pertumbuhan lambat, sering sakit.\n\n• Perut membesar karena pembesaran limpa atau hati.\n\n• Tulang pipi dan dahi bisa tampak menonjol.'
-      },
-      {
-        title: 'Pengobatan Thalasemia',
-        text: '• Transfusi darah rutin sangat penting.\n\n• Obat kelasi besi untuk mengurangi penumpukan zat besi akibat transfusi.\n\n• Transplantasi sumsum tulang bisa jadi solusi permanen, tapi butuh donor yang cocok dan biayanya besar.'
-      },
-      {
-        title: 'Pencegahan Thalasemia',
-        text: '• Lakukan tes genetik sebelum menikah, terutama jika ada riwayat keluarga.\n\n• Hindari menikah dengan sesama pembawa gen thalasemia.\n\n• Edukasi masyarakat tentang pentingnya deteksi dini.\n\n• Sayangi generasi berikutnya, cegah thalasemia sejak sekarang.'
-      }
-    ];
+<div id="landing">
+  <i class="bi bi-heart-pulse" style="font-size: 64px; color: #d63384;"></i>
+  <button id="startBtn" onclick="memulai()">Apa Itu Thalassemia?</button>
+</div>
 
-    let index = 0;
-    const audio = document.getElementById('bgAudio');
+<div id="content"></div>
 
-    async function memulai() {
-      const landing = document.getElementById('landing');
-      if (landing) landing.style.display = 'none';
-      if (audio) audio.play().catch(e => {});
-      tampilkanMateri();
+<audio id="bgMusic" src="https://www.maojagh.my.id/a.mp3" loop></audio>
+
+<script>
+  const materi = [
+    {
+      text: "• Thalassemia adalah kelainan darah genetik yang memengaruhi produksi hemoglobin.\n\n• Hemoglobin membawa oksigen ke seluruh tubuh.\n\n• Thalassemia bukan penyakit menular, tapi diturunkan dari orang tua."
+    },
+    {
+      text: "• Penyebab utama Thalassemia adalah kelainan genetik dari satu atau dua orang tua.\n\n• Jika hanya satu gen yang rusak: Thalassemia Minor.\n\n• Jika dua gen: Thalassemia Mayor (lebih berat dan butuh transfusi rutin)."
+    },
+    {
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHulmKZ1WExp5IH1vMPZhlzhVRYOIceK1okESUutF1nNNJ-sHEAarVB0g&s=10"
+    },
+    {
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxNdME627Ai6z-famXOnKMdkgICguIwispHKfrgc49jOlcXvLFhVnOV5GA&s=10"
+    },
+    {
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5vv7A91NWgStB0W0aS_x-ToS5fgI3Rakg3QjwTf8zLVI4r2C652S-Cac&s=10",
+      source: "https://www.scielo.br/j/dpjo/a/NqHCJgR7wrxSKNwTWsXM7wq/?lang=en"
+    },
+    {
+      text: "• Pengobatan Thalassemia Mayor umumnya berupa transfusi darah rutin dan terapi kelasi zat besi.\n\n• Terapi genetik sedang dikembangkan sebagai solusi jangka panjang.\n\n• Deteksi dini dan konseling genetik penting untuk pencegahan."
+    },
+    {
+      text: "• Penyakit ini pertama kali dikenali secara klinis pada awal abad ke-20.\n\n• Nama 'Thalassemia' berasal dari bahasa Yunani 'thalassa' yang berarti laut — karena pertama kali ditemukan pada populasi Mediterania."
     }
+  ];
 
-    async function tampilkanMateri() {
-      if (index >= materi.length) {
-        await Swal.fire({
-          title: 'Terima kasih sudah belajar!',
-          text: 'Yuk sebarkan info penting ini ke orang lain.',
-          icon: 'success',
-          confirmButtonText: 'Siap!',
-          allowOutsideClick: false
-        });
-        index = 0;
-        document.getElementById('landing').style.display = 'flex';
-        return;
+  let index = 0;
+
+  function memulai() {
+    document.getElementById("landing").style.display = "none";
+
+    // Fade in music
+    const bgMusic = document.getElementById("bgMusic");
+    bgMusic.volume = 0;
+    bgMusic.play().then(() => {
+      let vol = 0;
+      const fadeInterval = setInterval(() => {
+        if (vol < 0.4) {
+          vol += 0.02;
+          bgMusic.volume = vol;
+        } else {
+          clearInterval(fadeInterval);
+        }
+      }, 200);
+    }).catch(e => console.warn("Autoplay blocked:", e));
+
+    tampilkanMateri();
+  }
+
+  function tampilkanMateri() {
+    if (index >= materi.length) return;
+
+    const container = document.getElementById("content");
+    const item = materi[index];
+
+    if (item.text) {
+      const el = document.createElement("div");
+      el.className = "typing";
+      container.appendChild(el);
+      ketikTulisan(item.text, el, () => {
+        el.classList.remove("typing");
+        index++;
+        setTimeout(tampilkanMateri, 1000);
+      });
+    } else if (item.image) {
+      const img = document.createElement("img");
+      img.className = "slide-img";
+      img.src = item.image;
+      container.appendChild(img);
+
+      if (item.source) {
+        const source = document.createElement("div");
+        source.className = "source";
+        source.innerHTML = `Source: <a href="${item.source}" target="_blank">${item.source}</a>`;
+        container.appendChild(source);
       }
 
-      const m = materi[index];
-      await Swal.fire({
-        title: `<strong>${m.title}</strong>`,
-        html: `<pre style="text-align:left;font-size:1em;white-space:pre-wrap">${m.text}</pre>`,confirmButtonText: 'Lanjut',
-    backdrop: true,
-    allowOutsideClick: false,
-    customClass: {
-      popup: 'popup-style'
+      index++;
+      setTimeout(tampilkanMateri, 2500);
     }
-  });
+  }
 
-  index++;
-  tampilkanMateri();
-}
-
-  </script></body>
+  function ketikTulisan(text, el, callback) {
+    let i = 0;
+    const speed = 40; // Lebih lambat dari sebelumnya
+    function type() {
+      if (i < text.length) {
+        el.textContent += text.charAt(i);
+        i++;
+        setTimeout(type, speed);
+      } else {
+        callback();
+      }
+    }
+    type();
+  }
+</script>
+</body>
 </html>
