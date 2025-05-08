@@ -1,155 +1,143 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apa Itu?</title>
-  <meta name="description" content="Web edukasi interaktif tentang Thalassemia dengan animasi pengetikan dan gambar informatif." />  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-  <link rel="icon" href="https://i.scdn.co/image/ab67616d00001e02f02777fb6264e2870608839f" type="image/png" />  <style>
+  <title>Apa itu?</title>
+  <link rel="icon" href="https://i.scdn.co/image/ab67616d00001e02f02777fb6264e2870608839f" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f0f4ff;
-      color: #333;
-      overflow-x: hidden;
+      background-color: #e7f5ff;
+      font-family: 'Segoe UI', sans-serif;
+      color: #212529;
+      padding: 20px;
     }
     #landing {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100vh;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
+      text-align: center;
+      margin-top: 100px;
     }
-    #startBtn {
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 18px;
-      background: #d63384;
+    button {
+      background-color: #d63384;
       color: white;
       border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    #content {
-      padding: 40px 20px;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
+      padding: 12px 20px;
       font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
     }
-    .typing {
-      white-space: pre-line;
-      animation: fadeIn 1s ease forwards;
+    #konten {
+      display: none;
+      margin-top: 40px;
     }
-    .image-container {
-      text-align: center;
-      margin: 20px 0;
+    .section {
+      margin-bottom: 40px;
     }
-    .image-container img {
+    .gambar {
+      display: none;
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
+      margin: 10px auto;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    .image-container strong {
+    strong {
       display: block;
       margin-bottom: 10px;
+      font-weight: bold;
+      font-size: 18px;
     }
-    .source {
-      font-size: 14px;
-      text-align: center;
-      color: #555;
+    a {
+      color: #0c8599;
     }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-  </style></head>
+  </style>
+</head>
 <body>
+  <audio autoplay loop>
+    <source src="https://www.maojagh.my.id/a.mp3" type="audio/mpeg">
+  </audio>
+
   <div id="landing">
     <i class="bi bi-heart-pulse" style="font-size: 64px; color: #d63384;"></i>
     <button id="startBtn" onclick="memulai()">Apa Itu Thalassemia?</button>
-  </div>  <div id="content"></div><audio id="bgAudio" src="https://www.maojagh.my.id/a.mp3" preload="auto" loop></audio>
+  </div>
+
+  <div id="konten"></div>
 
   <script>
-    const materi = [
-      `<strong>Apa Itu Thalassemia?</strong>\nThalassemia adalah kelainan darah genetik yang memengaruhi produksi hemoglobin.\nHemoglobin membawa oksigen ke seluruh tubuh.\nThalassemia bukan penyakit menular, tapi diturunkan dari orang tua.`,
+    const konten = document.getElementById('konten');
+    const isi = [
+      "<strong>Apa Itu Thalassemia?</strong>\nThalassemia adalah kelainan darah genetik yang memengaruhi produksi hemoglobin. Hemoglobin membawa oksigen ke seluruh tubuh. Thalassemia bukan penyakit menular, tapi diturunkan dari orang tua.",
+      "<strong>Sejarah Singkat</strong>\nThalassemia pertama kali dijelaskan pada tahun 1925 oleh Dr. Thomas Cooley.\nSaat itu disebut Cooley’s anemia, sebelum diberi nama Thalassemia.\nNama ini berasal dari bahasa Yunani \"Thalassa\" (laut), karena awalnya banyak ditemukan di daerah Mediterania.",
+      "<strong>Penyebab Thalassemia</strong>\n• Penyebab utama Thalassemia adalah kelainan genetik dari satu atau dua orang tua.\n• Jika hanya satu gen yang rusak: Thalassemia Minor.\n• Jika dua gen: Thalassemia Mayor (lebih berat dan butuh transfusi rutin).",
+      "<strong>Thalassemia Major Patient</strong>",
+      "GAMBAR",
+      "<strong>Pengobatan</strong>\n• Transfusi darah rutin.\n• Terapi kelasi zat besi untuk mencegah kelebihan zat besi.\n• Transplantasi sumsum tulang dalam beberapa kasus.\n• Dukungan psikososial dan manajemen jangka panjang.",
+      '<p style="font-size: 14px;"><i>Source: <a href="https://www.scielo.br/j/dpjo/a/NqHCJgR7wrxSKNwTWsXM7wq/?lang=en" target="_blank">scielo.br</a></i></p>'
+    ];
 
-      `<strong>Sejarah Singkat</strong>\nThalassemia pertama kali dijelaskan pada tahun 1925 oleh Dr. Thomas Cooley.\nSaat itu disebut Cooley’s anemia, sebelum diberi nama Thalassemia.\nNama ini berasal dari bahasa Yunani \"Thalassa\" (laut), karena awalnya banyak ditemukan di daerah Mediterania.`,
-
-      `<strong>Penyebab Thalassemia</strong>\n• Penyebab utama Thalassemia adalah kelainan genetik dari satu atau dua orang tua.\n• Jika hanya satu gen yang rusak: Thalassemia Minor.\n• Jika dua gen: Thalassemia Mayor (lebih berat dan butuh transfusi rutin).`,
-
-      `<strong>Thalassemia Major Patient</strong>\nimg:https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHulmKZ1WExp5IH1vMPZhlzhVRYOIceK1okESUutF1nNNJ-sHEAarVB0g&s=10`,
-      `<strong>Thalassemia Major Patient</strong>\nimg:https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxNdME627Ai6z-famXOnKMdkgICguIwispHKfrgc49jOlcXvLFhVnOV5GA&s=10`,
-      `<strong>Thalassemia Major Patient</strong>\nimg:https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5vv7A91NWgStB0W0aS_x-ToS5fgI3Rakg3QjwTf8zLVI4r2C652S-Cac&s=10`,
-
-      `source:https://www.scielo.br/j/dpjo/a/NqHCJgR7wrxSKNwTWsXM7wq/?lang=en`,
-
-      `<strong>Pengobatan</strong>\n• Thalassemia Mayor membutuhkan transfusi darah rutin dan terapi kelasi besi.\n• Transplantasi sumsum tulang bisa menjadi solusi untuk beberapa kasus.`
+    const gambarList = [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHulmKZ1WExp5IH1vMPZhlzhVRYOIceK1okESUutF1nNNJ-sHEAarVB0g&s=10",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxNdME627Ai6z-famX0nKMdkglCgulwispHKfrgc49jOlcXvLFhVnOV5GA&s=10",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5vv7A91NWgStB0W0aS_x-ToS5fgl3Rakg3QjwTf8zLVI4r2C652S-Cac&s=10"
     ];
 
     let index = 0;
-    const contentEl = document.getElementById('content');
 
     function memulai() {
       document.getElementById('landing').style.display = 'none';
-      document.getElementById('bgAudio').play();
-      tampilkanBerikutnya();
+      konten.style.display = 'block';
+      ketikBerikutnya();
     }
 
-    function tampilkanBerikutnya() {
-      if (index >= materi.length) return;
-      const item = materi[index];
+    function ketikBerikutnya() {
+      if (index >= isi.length) return;
 
-      if (item.startsWith('img:')) {
-        const url = item.split('img:')[1];
-        const container = document.createElement('div');
-        container.className = 'image-container';
-        container.innerHTML = `<strong>Thalassemia Major Patient</strong><img src="${url}" alt="Thalassemia Patient">`;
-        contentEl.appendChild(container);
+      if (isi[index] === "GAMBAR") {
+        tampilkanGambar();
         index++;
-        setTimeout(tampilkanBerikutnya, 2500);
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      } else if (item.startsWith('source:')) {
-        const url = item.split('source:')[1];
-        const source = document.createElement('div');
-        source.className = 'source';
-        source.innerHTML = `Source: <a href="${url}" target="_blank">${url}</a>`;
-        contentEl.appendChild(source);
-        index++;
-        setTimeout(tampilkanBerikutnya, 2500);
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-      } else {
-        ketikTeks(item, () => {
-          index++;
-          tampilkanBerikutnya();
-        });
+        setTimeout(ketikBerikutnya, 4000);
+        return;
       }
-    }
 
-    function ketikTeks(teks, selesai) {
-      const p = document.createElement('div');
-      p.className = 'typing';
-      contentEl.appendChild(p);
+      const teks = isi[index];
+      const div = document.createElement("div");
+      div.className = "section";
+      konten.appendChild(div);
       let i = 0;
-
-      function ketik() {
+      const interval = setInterval(() => {
         if (i < teks.length) {
-          p.innerHTML += teks[i] === '\n' ? '<br>' : teks[i];
-          i++;
+          div.innerHTML += teks.charAt(i) === '\n' ? '<br>' : teks.charAt(i);
           window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-          setTimeout(ketik, 30); // Kecepatan diketik (lebih lambat dari sebelumnya)
+          i++;
         } else {
-          p.innerHTML = teks.replace(/\n/g, '<br>');
-          selesai();
+          clearInterval(interval);
+          index++;
+          setTimeout(ketikBerikutnya, 800);
         }
+      }, 30); // animasi ketik lambat
+    }
+
+    function tampilkanGambar() {
+      const imgDiv = document.createElement("div");
+      imgDiv.className = "section";
+      konten.appendChild(imgDiv);
+      let imgIndex = 0;
+
+      function showNextImage() {
+        if (imgIndex >= gambarList.length) return;
+        const img = document.createElement("img");
+        img.src = gambarList[imgIndex];
+        img.className = "gambar";
+        img.style.display = 'block';
+        imgDiv.appendChild(img);
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        imgIndex++;
+        setTimeout(showNextImage, 2500);
       }
 
-      ketik();
+      showNextImage();
     }
-  </script></body>
+  </script>
+</body>
 </html>
