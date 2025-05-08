@@ -1,116 +1,117 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portofolio</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- AOS Animate CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thalasemia Edukatif</title>
+  <meta name="description" content="Web edukasi interaktif tentang Thalasemia. Dibuat dengan animasi ala Feeldream.">  <!-- SweetAlert2 -->  <script src="sweetalert2.all.min.js"></script>  <!-- Font & Style -->  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(to right, #f8f9fa, #e0eafc);
-      font-family: 'Segoe UI', sans-serif;
-    }
-    .portfolio-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-radius: 15px;
+      margin: 0;
+      font-family: 'Work Sans', sans-serif;
+      background: linear-gradient(to bottom, #dfefff, #f0f4ff);
       overflow: hidden;
-    }
-    .portfolio-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-    }
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: bold;
-    }
-    footer {
-      background-color: #212529;
-      color: #fff;
-    }
-    .footer-link {
-      color: #0d6efd;
-      text-decoration: none;
-    }
-    .footer-link:hover {
-      text-decoration: underline;
-    }
+    }#landing {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #eaf2f8;
+}
+
+#landing img {
+  width: 120px; /* Ganti logo RSIA Tambak di sini */
+  margin-bottom: 20px;
+}
+
+#startBtn {
+  padding: 12px 24px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1em;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#bgAudio {
+  display: none;
+}
+
   </style>
 </head>
-<body>
+<body>  <div id="landing">
+    <!-- Ganti dengan logo RSIA Tambak -->
+    <img src="logo-placeholder.png" alt="Logo RSIA Tambak">
+    <button id="startBtn" onclick="memulai()">Apa Itu Thalasemia?</button>
+  </div>  <!-- Background music --><audio id="bgAudio" src="musik-edukatif.mp3" preload="auto" loop></audio>
 
-  <!-- Header -->
-  <header class="text-white text-center py-5 mb-5" style="background: linear-gradient(135deg, #0d6efd, #6610f2);">
-    <div class="container">
-      <h1 class="fw-bold">Halo, Ini Karya-Karya Gue</h1>
-      <p class="lead">Sedikit cuplikan dari hal-hal yang gue kerjain dan gue banggakan</p>
-    </div>
-  </header>
-
-  <!-- Portfolio Section -->
-  <main class="container">
-    <h2 class="text-center section-title mb-5" data-aos="fade-up">Portofolio</h2>
-    <div class="row g-4">
-      <!-- Item 1 -->
-      <div class="col-md-4" data-aos="zoom-in" data-aos-duration="800">
-        <div class="card portfolio-card shadow">
-          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Web Project" />
-          <div class="card-body">
-            <h5 class="card-title">Website Keren</h5>
-            <p class="card-text">Landing page kece full responsive buat client startup.</p>
-            <a href="#" class="btn btn-outline-primary">Lihat Proyek</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 2 -->
-      <div class="col-md-4" data-aos="flip-left" data-aos-duration="1000">
-        <div class="card portfolio-card shadow">
-          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Photography" />
-          <div class="card-body">
-            <h5 class="card-title">Fotografi</h5>
-            <p class="card-text">Koleksi jepretan tangan sendiri yang udah mejeng di Shutterstock!</p>
-            <a href="#" class="btn btn-outline-primary">Lihat Galeri</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 3 -->
-      <div class="col-md-4" data-aos="flip-right" data-aos-duration="1000">
-        <div class="card portfolio-card shadow">
-          <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Music AI" />
-          <div class="card-body">
-            <h5 class="card-title">Musik + AI</h5>
-            <p class="card-text">Eksperimen gila bikin musik dibantu sama AI. Cek sound-nya!</p>
-            <a href="#" class="btn btn-outline-primary">Dengerin</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="text-center py-4 mt-5">
-    <p class="mb-1">© 2025 - Dibuat dengan semangat dan kopi hitam.</p>
-    <p class="mb-0">by 
-      <a href="https://rprewards.b4a.io/?uid=CFjdeoe2u2" class="footer-link" target="_blank" rel="noopener noreferrer">
-        Rewads
-      </a>
-    </p>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({
-      once: true,
-      delay: 100,
-      duration: 800,
-      easing: 'ease-in-out'
-    });
-  </script>
-</body>
+    const materi = [
+      {
+        title: 'Apa itu Thalasemia?',
+        text: '• Thalasemia adalah penyakit kelainan darah turunan.\n\n• Tubuh tidak mampu memproduksi hemoglobin dengan normal.\n\n• Hemoglobin penting untuk membawa oksigen ke seluruh tubuh.\n\n• Thalasemia bukan penyakit menular.'
+      },
+      {
+        title: 'Penyebab Thalasemia',
+        text: '• Disebabkan oleh kelainan genetik dari salah satu atau kedua orang tua.\n\n• Jika hanya satu gen yang diturunkan: disebut thalasemia minor.\n\n• Jika dua gen diturunkan: disebut thalasemia mayor.\n\n• Thalasemia mayor lebih berat dan butuh penanganan serius.'
+      },
+      {
+        title: 'Gejala Thalasemia Mayor',
+        text: '• Wajah pucat dan mudah lelah.\n\n• Pertumbuhan lambat, sering sakit.\n\n• Perut membesar karena pembesaran limpa atau hati.\n\n• Tulang pipi dan dahi bisa tampak menonjol.'
+      },
+      {
+        title: 'Pengobatan Thalasemia',
+        text: '• Transfusi darah rutin sangat penting.\n\n• Obat kelasi besi untuk mengurangi penumpukan zat besi akibat transfusi.\n\n• Transplantasi sumsum tulang bisa jadi solusi permanen, tapi butuh donor yang cocok dan biayanya besar.'
+      },
+      {
+        title: 'Pencegahan Thalasemia',
+        text: '• Lakukan tes genetik sebelum menikah, terutama jika ada riwayat keluarga.\n\n• Hindari menikah dengan sesama pembawa gen thalasemia.\n\n• Edukasi masyarakat tentang pentingnya deteksi dini.\n\n• Sayangi generasi berikutnya, cegah thalasemia sejak sekarang.'
+      }
+    ];
+
+    let index = 0;
+    const audio = document.getElementById('bgAudio');
+
+    async function memulai() {
+      document.getElementById('landing').style.display = 'none';
+      audio.play();
+      tampilkanMateri();
+    }
+
+    async function tampilkanMateri() {
+      if (index >= materi.length) {
+        await Swal.fire({
+          title: 'Terima kasih sudah belajar!',
+          text: 'Yuk sebarkan info penting ini ke orang lain.',
+          icon: 'success',
+          confirmButtonText: 'Siap!',
+          allowOutsideClick: false
+        });
+        index = 0;
+        document.getElementById('landing').style.display = 'flex';
+        return;
+      }
+
+      const m = materi[index];
+      await Swal.fire({
+        title: `<strong>${m.title}</strong>`,
+        html: `<pre style="text-align:left;font-size:1em;white-space:pre-wrap">${m.text}</pre>`,confirmButtonText: 'Lanjut',
+    backdrop: true,
+    allowOutsideClick: false,
+    customClass: {
+      popup: 'popup-style'
+    }
+  });
+
+  index++;
+  tampilkanMateri();
+}
+
+  </script></body>
 </html>
