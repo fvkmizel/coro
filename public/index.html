@@ -35,17 +35,11 @@
       margin-bottom: 40px;
     }
     .gambar {
-      display: none;
+      display: block;
       width: 100%;
       max-width: 500px;
       margin: 10px auto;
       border-radius: 10px;
-    }
-    strong {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: bold;
-      font-size: 18px;
     }
     a {
       color: #0c8599;
@@ -67,19 +61,17 @@
   <script>
     const konten = document.getElementById('konten');
     const isi = [
-      "<strong>Apa Itu Thalassemia?</strong>\nThalassemia adalah kelainan darah genetik yang memengaruhi produksi hemoglobin. Hemoglobin membawa oksigen ke seluruh tubuh. Thalassemia bukan penyakit menular, tapi diturunkan dari orang tua.",
-      "<strong>Sejarah Singkat</strong>\nThalassemia pertama kali dijelaskan pada tahun 1925 oleh Dr. Thomas Cooley.\nSaat itu disebut Cooley’s anemia, sebelum diberi nama Thalassemia.\nNama ini berasal dari bahasa Yunani \"Thalassa\" (laut), karena awalnya banyak ditemukan di daerah Mediterania.",
-      "<strong>Penyebab Thalassemia</strong>\n• Penyebab utama Thalassemia adalah kelainan genetik dari satu atau dua orang tua.\n• Jika hanya satu gen yang rusak: Thalassemia Minor.\n• Jika dua gen: Thalassemia Mayor (lebih berat dan butuh transfusi rutin).",
-      "<strong>Thalassemia Major Patient</strong>",
-      "GAMBAR",
-      "<strong>Pengobatan</strong>\n• Transfusi darah rutin.\n• Terapi kelasi zat besi untuk mencegah kelebihan zat besi.\n• Transplantasi sumsum tulang dalam beberapa kasus.\n• Dukungan psikososial dan manajemen jangka panjang.",
-      '<p style="font-size: 14px;"><i>Source: <a href="https://www.scielo.br/j/dpjo/a/NqHCJgR7wrxSKNwTWsXM7wq/?lang=en" target="_blank">scielo.br</a></i></p>'
-    ];
-
-    const gambarList = [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHulmKZ1WExp5IH1vMPZhlzhVRYOIceK1okESUutF1nNNJ-sHEAarVB0g&s=10",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxNdME627Ai6z-famX0nKMdkglCgulwispHKfrgc49jOlcXvLFhVnOV5GA&s=10",
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5vv7A91NWgStB0W0aS_x-ToS5fgl3Rakg3QjwTf8zLVI4r2C652S-Cac&s=10"
+      { type: 'text', content: "<strong>Apa Itu Thalassemia?</strong><br>Thalassemia adalah kelainan darah genetik yang memengaruhi produksi hemoglobin. Hemoglobin membawa oksigen ke seluruh tubuh. Thalassemia bukan penyakit menular, tapi diturunkan dari orang tua." },
+      { type: 'text', content: "<strong>Sejarah Singkat</strong><br>Thalassemia pertama kali dijelaskan pada tahun 1925 oleh Dr. Thomas Cooley.<br>Saat itu disebut Cooley’s anemia, sebelum diberi nama Thalassemia.<br>Nama ini berasal dari bahasa Yunani \"Thalassa\" (laut), karena awalnya banyak ditemukan di daerah Mediterania." },
+      { type: 'text', content: "<strong>Penyebab Thalassemia</strong><br>• Penyebab utama Thalassemia adalah kelainan genetik dari satu atau dua orang tua.<br>• Jika hanya satu gen yang rusak: Thalassemia Minor.<br>• Jika dua gen: Thalassemia Mayor (lebih berat dan butuh transfusi rutin)." },
+      { type: 'text', content: "<strong>Thalassemia Major Patient</strong>" },
+      { type: 'images', images: [
+        "https://upload.wikimedia.org/wikipedia/commons/7/78/Beta_thalassemia.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/d/d3/Microcytic_hypochromic_anemia.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/5/57/Blood_film_sickle_cell.jpg"
+      ]},
+      { type: 'text', content: "<strong>Pengobatan</strong><br>• Transfusi darah rutin.<br>• Terapi kelasi zat besi untuk mencegah kelebihan zat besi.<br>• Transplantasi sumsum tulang dalam beberapa kasus.<br>• Dukungan psikososial dan manajemen jangka panjang." },
+      { type: 'html', content: `<p style="font-size: 14px;"><i>Source: <a href="https://www.scielo.br/j/dpjo/a/NqHCJgR7wrxSKNwTWsXM7wq/?lang=en" target="_blank">scielo.br</a></i></p>` }
     ];
 
     let index = 0;
@@ -87,56 +79,63 @@
     function memulai() {
       document.getElementById('landing').style.display = 'none';
       konten.style.display = 'block';
-      ketikBerikutnya();
+      tampilkanBerikutnya();
     }
 
-    function ketikBerikutnya() {
+    function tampilkanBerikutnya() {
       if (index >= isi.length) return;
+      const item = isi[index];
+      const section = document.createElement("div");
+      section.className = "section";
+      konten.appendChild(section);
 
-      if (isi[index] === "GAMBAR") {
-        tampilkanGambar();
+      if (item.type === 'text') {
+        ketikTeks(section, item.content, () => {
+          index++;
+          setTimeout(tampilkanBerikutnya, 1000);
+        });
+      } else if (item.type === 'html') {
+        section.innerHTML = item.content;
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         index++;
-        setTimeout(ketikBerikutnya, 4000);
-        return;
+        setTimeout(tampilkanBerikutnya, 1000);
+      } else if (item.type === 'images') {
+        tampilkanGambar(section, item.images, () => {
+          index++;
+          setTimeout(tampilkanBerikutnya, 1000);
+        });
       }
+    }
 
-      const teks = isi[index];
-      const div = document.createElement("div");
-      div.className = "section";
-      konten.appendChild(div);
+    function ketikTeks(container, html, callback) {
       let i = 0;
+      let teks = html.replace(/<br>/g, "\n");
       const interval = setInterval(() => {
         if (i < teks.length) {
-          div.innerHTML += teks.charAt(i) === '\n' ? '<br>' : teks.charAt(i);
+          const char = teks.charAt(i);
+          container.innerHTML += char === '\n' ? '<br>' : char;
           window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
           i++;
         } else {
           clearInterval(interval);
-          index++;
-          setTimeout(ketikBerikutnya, 800);
+          callback();
         }
-      }, 30); // animasi ketik lambat
+      }, 30);
     }
 
-    function tampilkanGambar() {
-      const imgDiv = document.createElement("div");
-      imgDiv.className = "section";
-      konten.appendChild(imgDiv);
-      let imgIndex = 0;
-
-      function showNextImage() {
-        if (imgIndex >= gambarList.length) return;
+    function tampilkanGambar(container, imageList, callback) {
+      let i = 0;
+      function nextImage() {
+        if (i >= imageList.length) return callback();
         const img = document.createElement("img");
-        img.src = gambarList[imgIndex];
+        img.src = imageList[i];
         img.className = "gambar";
-        img.style.display = 'block';
-        imgDiv.appendChild(img);
+        container.appendChild(img);
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        imgIndex++;
-        setTimeout(showNextImage, 2500);
+        i++;
+        setTimeout(nextImage, 2500);
       }
-
-      showNextImage();
+      nextImage();
     }
   </script>
 </body>
