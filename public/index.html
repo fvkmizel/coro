@@ -4,116 +4,146 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apa itu?</title>
-  <link rel="icon" href="https://i.scdn.co/image/ab67616d00001e02f02777fb6264e2870608839f"/>
-  <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+  <meta name="description" content="Edukasi interaktif Thalassemia.">
+
+  <!-- Font & Icon -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="icon" href="https://i.scdn.co/image/ab67616d00001e02f02777fb6264e2870608839f" type="image/png">
 
   <style>
     body {
       margin: 0;
-      font-family: 'Karla', sans-serif;
-      background-color: #eaf9ff;
-      color: #222;
-      padding: 0 20px;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #e6f4ff;
+      overflow-x: hidden;
+      color: #333;
+      padding-bottom: 100px;
     }
 
     #landing {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100vh;
-      background: white;
+      background: #eaf6ff;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      z-index: 10;
+      justify-content: center;
+      z-index: 999;
     }
 
     #startBtn {
       padding: 12px 24px;
-      font-size: 1.1em;
-      background: #007bff;
-      color: white;
+      background: #0d6efd;
+      color: #fff;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
+      font-size: 1.2em;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 15px;
     }
 
-    .typing {
-      white-space: pre-line;
-      font-size: 1.1em;
-      line-height: 1.6;
-      margin-bottom: 20px;
+    #content {
+      max-width: 700px;
+      margin: 100px auto 0;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 1s ease-in;
     }
 
-    .slide-img {
+    .fade-in {
+      opacity: 1 !important;
+    }
+
+    .gambar {
+      display: none;
       width: 100%;
-      max-width: 500px;
-      margin: 20px auto;
-      display: block;
-      border-radius: 10px;
+      margin-top: 20px;
+      border-radius: 12px;
     }
 
     .source {
       font-size: 0.9em;
       color: #555;
-      text-align: center;
-      margin-bottom: 40px;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
 <div id="landing">
-  <button id="startBtn" onclick="memulai()">Apa itu Thalassemia?</button>
+  <i class="bi bi-heart-pulse" style="font-size: 64px; color: #d63384; margin-bottom: 20px;"></i>
+  <button id="startBtn" onclick="memulai()">Apa Itu Thalassemia?</button>
 </div>
+
+<div id="content"></div>
 
 <audio id="bgAudio" src="https://www.maojagh.my.id/a.mp3" preload="auto" loop></audio>
 
-<div id="content" style="padding-top: 100px;"></div>
-
 <script>
   const materi = [
-    {
-      text: "• Thalassemia adalah kelainan darah genetik yang memengaruhi produksi hemoglobin.\n• Hemoglobin membawa oksigen ke seluruh tubuh.\n• Thalassemia bukan penyakit menular, tapi diturunkan dari orang tua."
-    },
-    {
-      text: "• Penyebab utama Thalassemia adalah kelainan genetik dari satu atau dua orang tua.\n• Jika hanya satu gen yang rusak: Thalassemia Minor.\n• Jika dua gen: Thalassemia Mayor (lebih berat dan butuh transfusi rutin)."
-    },
-    {
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHulmKZ1WExp5IH1vMPZhlzhVRYOIceK1okESUutF1nNNJ-sHEAarVB0g&s=10"
-    },
-    {
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxNdME627Ai6z-famXOnKMdkgICguIwispHKfrgc49jOlcXvLFhVnOV5GA&s=10"
-    },
-    {
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5vv7A91NWgStB0W0aS_x-ToS5fgI3Rakg3QjwTf8zLVI4r2C652S-Cac&s=10",
-      source: "https://www.scielo.br/j/dpjo/a/NqHCJgR7wrxSKNwTWsXM7wq/?lang=en"
-    },
-    {
-      text: "• Pengobatan Thalassemia Mayor memerlukan transfusi darah rutin.\n• Juga membutuhkan terapi khelasi untuk mengurangi zat besi berlebih akibat transfusi.\n• Dalam beberapa kasus, transplantasi sumsum tulang bisa menjadi pilihan."
-    },
-    {
-      text: "• Thalassemia pertama kali dideskripsikan oleh dokter Amerika bernama Thomas Cooley pada tahun 1925.\n• Ia mengamati anak-anak keturunan Mediterania yang menunjukkan gejala anemia parah dan deformitas tulang."
-    }
+    `• Thalassemia adalah kelainan darah genetik yang memengaruhi produksi hemoglobin.\n• Hemoglobin membawa oksigen ke seluruh tubuh.\n• Thalassemia bukan penyakit menular, tapi diturunkan dari orang tua.`,
+    `• Penyebab utama Thalassemia adalah kelainan genetik dari satu atau dua orang tua.\n• Jika hanya satu gen yang rusak: Thalassemia Minor.\n• Jika dua gen: Thalassemia Mayor (lebih berat dan butuh transfusi rutin).`,
+    'img:https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHulmKZ1WExp5IH1vMPZhlzhVRYOIceK1okESUutF1nNNJ-sHEAarVB0g&s=10',
+    'img:https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxNdME627Ai6z-famXOnKMdkgICguIwispHKfrgc49jOlcXvLFhVnOV5GA&s=10',
+    'img:https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5vv7A91NWgStB0W0aS_x-ToS5fgI3Rakg3QjwTf8zLVI4r2C652S-Cac&s=10',
+    'source:https://www.scielo.br/j/dpjo/a/NqHCJgR7wrxSKNwTWsXM7wq/?lang=en',
+    `• Pengobatan Thalassemia Mayor meliputi transfusi darah rutin dan terapi kelasi besi.\n• Transplantasi sumsum tulang bisa menjadi solusi untuk beberapa kasus tertentu.`,
+    `• Thalassemia pertama kali dijelaskan pada tahun 1925 oleh Dr. Thomas Cooley.\n• Saat itu disebut Cooley’s anemia, sebelum diberi nama Thalassemia.\n• Nama ini berasal dari bahasa Yunani "Thalassa" (laut) karena awalnya banyak ditemukan di daerah Mediterania.`
   ];
 
-  let index = 0;
+  let currentIndex = 0;
 
   function memulai() {
-    document.getElementById("landing").style.display = "none";
-    document.getElementById("bgAudio").play();
-    tampilkanMateri();
+    document.getElementById('landing').style.display = 'none';
+    document.getElementById('content').classList.add('fade-in');
+    document.getElementById('bgAudio').play();
+    tampilkanSelanjutnya();
+  }
+
+  function tampilkanSelanjutnya() {
+    if (currentIndex >= materi.length) return;
+    const container = document.getElementById('content');
+    const item = materi[currentIndex];
+
+    if (item.startsWith('img:')) {
+      const img = document.createElement('img');
+      img.src = item.replace('img:', '');
+      img.className = 'gambar';
+      container.appendChild(img);
+      img.style.display = 'block';
+      scrollToBottom();
+      currentIndex++;
+      setTimeout(tampilkanSelanjutnya, 2000);
+    } else if (item.startsWith('source:')) {
+      const p = document.createElement('div');
+      p.className = 'source';
+      p.innerHTML = 'Source: <a href="' + item.replace('source:', '') + '" target="_blank">' + item.replace('source:', '') + '</a>';
+      container.appendChild(p);
+      scrollToBottom();
+      currentIndex++;
+      setTimeout(tampilkanSelanjutnya, 2000);
+    } else {
+      const p = document.createElement('p');
+      p.innerHTML = '';
+      container.appendChild(p);
+      ketikTulisan(item, p, () => {
+        currentIndex++;
+        setTimeout(tampilkanSelanjutnya, 1000);
+      });
+    }
   }
 
   function ketikTulisan(text, el, callback) {
     let i = 0;
     function ketik() {
       if (i < text.length) {
-        el.innerHTML += text.charAt(i);
+        const char = text.charAt(i);
+        el.innerHTML += char === '\n' ? '<br>' : char;
         i++;
         scrollToBottom();
-        setTimeout(ketik, 35); // Lebih lambat
+        setTimeout(ketik, 35); // bisa kamu atur kecepatannya di sini
       } else {
         if (callback) callback();
       }
@@ -121,53 +151,12 @@
     ketik();
   }
 
-  function tampilkanMateri() {
-    if (index >= materi.length) return;
-
-    const container = document.getElementById("content");
-    const item = materi[index];
-
-    if (item.text) {
-      const wrapper = document.createElement("div");
-      wrapper.style.marginBottom = "40px";
-      const el = document.createElement("div");
-      el.className = "typing";
-      wrapper.appendChild(el);
-      container.appendChild(wrapper);
-
-      ketikTulisan(item.text, el, () => {
-        el.classList.remove("typing");
-        index++;
-        scrollToBottom();
-        setTimeout(tampilkanMateri, 1200);
-      });
-
-    } else if (item.image) {
-      const img = document.createElement("img");
-      img.className = "slide-img";
-      img.src = item.image;
-      container.appendChild(img);
-
-      if (item.source) {
-        const source = document.createElement("div");
-        source.className = "source";
-        source.innerHTML = `Source: <a href="${item.source}" target="_blank">${item.source}</a>`;
-        container.appendChild(source);
-      }
-
-      index++;
-      scrollToBottom();
-      setTimeout(tampilkanMateri, 2000);
-    }
-  }
-
   function scrollToBottom() {
     window.scrollTo({
       top: document.body.scrollHeight,
-      behavior: "smooth"
+      behavior: 'smooth'
     });
   }
 </script>
-
 </body>
 </html>
