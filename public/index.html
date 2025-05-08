@@ -79,8 +79,9 @@
     const audio = document.getElementById('bgAudio');
 
     async function memulai() {
-      document.getElementById('landing').style.display = 'none';
-      audio.play();
+      const landing = document.getElementById('landing');
+      if (landing) landing.style.display = 'none';
+      if (audio) audio.play().catch(e => {});
       tampilkanMateri();
     }
 
