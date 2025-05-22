@@ -220,7 +220,7 @@ span{
 
 @keyframes cursor{
     to{
-        border-left: 3px solid #b74b4b;
+        border-left: 1px solid #b74b4b;
     }
 }
 
