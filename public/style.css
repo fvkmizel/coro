@@ -226,19 +226,19 @@ span{
 
 @keyframes words{
     0%, 20%{
-        content: "Web Developer";
+        content: "I'm a Framework Fanatic – collecting libraries like they're Pokémon";
     }
     21%, 40%{
-        content: "Developer";
+        content: "I'm a Console Philosopher – echoing truths through console.log().";
     }
     41%, 60%{
-        content: "Web Designer";
+        content: "I'm a Git Commander – pushing through life one commit at a time.";
     }
     61%, 80%{
-        content: "Youtuber";
+        content: "I'm a Keyboard Warrior – typing dreams into the web.";
     }
     81%, 100%{
-        content: "Script Writer";
+        content: "I'm a Browser Therapist – I make things load and behave.";
     }
 }
 
