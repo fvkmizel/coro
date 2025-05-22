@@ -218,22 +218,10 @@ span{
     animation: cursor 0.6s infinite;
 }
 
-@keyframes words{
-    0%, 20%{
-        content: "I'm a Framework Fanatic – collecting libraries like they're Pokémon";
-    }
-    21%, 40%{
-        content: "I'm a Console Philosopher – echoing truths through console.log().";
-    }
-    41%, 60%{
-        content: "I'm a Git Commander – pushing through life one commit at a time.";
-    }
-    61%, 80%{
-        content: "I'm a Keyboard Warrior – typing dreams into the web.";
-    }
-    81%, 100%{
-        content: "I'm a Browser Therapist – I make things load and behave.";
-    }
+.typed-text {
+  font-size: 20px;
+  color: #fff;
+  font-family: monospace;
 }
 
 @media (max-width: 1000px){
